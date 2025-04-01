@@ -87,9 +87,10 @@
     <div id="resultado" class="carro-container"></div>
     <script>
         let carros = [];
+        const BASE_URL = "https://projetoapicarros.onrender.com";
         
         async function carregarCarros() {
-            const resposta = await fetch("http://localhost:3000/carros");
+            const resposta = await fetch(`${BASE_URL}/carros`);
             carros = await resposta.json();
             popularFiltros();
             filtrar();
@@ -142,7 +143,7 @@
                         <p><strong>Cor:</strong> ${carro.cor}</p>
                         <p><strong>Preço Médio:</strong> R$ ${carro.preco_medio.toLocaleString()}</p>
                         <p><strong>Tipo:</strong> ${carro.tipo_carroceria}</p>
-                        <img src="http://localhost:3000${carro.imagemUrl}" alt="Imagem do ${carro.modelo}">
+                        <img src="${BASE_URL}${carro.imagemUrl}" alt="Imagem do ${carro.modelo}">
                     </div>
                 `;
             });
